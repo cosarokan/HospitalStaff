@@ -10,7 +10,7 @@ namespace HospitalStaff.Entities
         public TypeOfDoctor TypeOfDoctor { get; set; }
         public override string ToString()
         {
-            return ($"Doctor's name: {Name} -------- Shift hour: {Shift}");
+            return ($"{Name}");
         }
     }
     public enum TypeOfDoctor : byte

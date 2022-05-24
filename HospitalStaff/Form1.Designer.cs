@@ -30,10 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageAddDoctor = new System.Windows.Forms.TabPage();
+            this.comboBoxDoctorGender = new System.Windows.Forms.ComboBox();
             this.lblDoctorType = new System.Windows.Forms.Label();
             this.comboBoxDoctorType = new System.Windows.Forms.ComboBox();
-            this.btnDoctorAdd = new System.Windows.Forms.Button();
-            this.buttonDoctorCalculateShift = new System.Windows.Forms.Button();
             this.txtDoctorShift = new System.Windows.Forms.TextBox();
             this.txtDoctorPhone = new System.Windows.Forms.TextBox();
             this.lblDoctorShiftHour = new System.Windows.Forms.Label();
@@ -62,17 +61,25 @@
             this.lblNurseName = new System.Windows.Forms.Label();
             this.txtNurseTCIdentity = new System.Windows.Forms.TextBox();
             this.lblNursetTCIdentity = new System.Windows.Forms.Label();
-            this.comboBoxDoctorGender = new System.Windows.Forms.ComboBox();
-            this.listBoxDoctors = new System.Windows.Forms.ListBox();
+            this.lblDoctorSalary = new System.Windows.Forms.Label();
+            this.txtDoctorSalary = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBoxDoctors = new System.Windows.Forms.ComboBox();
+            this.listBoxSalary = new System.Windows.Forms.ListBox();
+            this.buttonDoctorShowSalary = new System.Windows.Forms.Button();
+            this.btnDoctorAdd = new System.Windows.Forms.Button();
+            this.buttonSalaryDisplayCalculateShift = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAddDoctor.SuspendLayout();
             this.tabPageAddNurse.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageAddDoctor);
             this.tabControl1.Controls.Add(this.tabPageAddNurse);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -82,17 +89,19 @@
             // 
             // tabPageAddDoctor
             // 
-            this.tabPageAddDoctor.Controls.Add(this.listBoxDoctors);
+            this.tabPageAddDoctor.Controls.Add(this.comboBoxDoctors);
             this.tabPageAddDoctor.Controls.Add(this.comboBoxDoctorGender);
             this.tabPageAddDoctor.Controls.Add(this.lblDoctorType);
             this.tabPageAddDoctor.Controls.Add(this.comboBoxDoctorType);
             this.tabPageAddDoctor.Controls.Add(this.btnDoctorAdd);
-            this.tabPageAddDoctor.Controls.Add(this.buttonDoctorCalculateShift);
+            this.tabPageAddDoctor.Controls.Add(this.buttonDoctorShowSalary);
             this.tabPageAddDoctor.Controls.Add(this.txtDoctorShift);
             this.tabPageAddDoctor.Controls.Add(this.txtDoctorPhone);
             this.tabPageAddDoctor.Controls.Add(this.lblDoctorShiftHour);
             this.tabPageAddDoctor.Controls.Add(this.lblDoctorGender);
             this.tabPageAddDoctor.Controls.Add(this.lblDoctorPhone);
+            this.tabPageAddDoctor.Controls.Add(this.txtDoctorSalary);
+            this.tabPageAddDoctor.Controls.Add(this.lblDoctorSalary);
             this.tabPageAddDoctor.Controls.Add(this.txtDoctorSurname);
             this.tabPageAddDoctor.Controls.Add(this.lblDoctorSurname);
             this.tabPageAddDoctor.Controls.Add(this.txtDoctorName);
@@ -107,10 +116,18 @@
             this.tabPageAddDoctor.Text = "Add Doctor";
             this.tabPageAddDoctor.UseVisualStyleBackColor = true;
             // 
+            // comboBoxDoctorGender
+            // 
+            this.comboBoxDoctorGender.FormattingEnabled = true;
+            this.comboBoxDoctorGender.Location = new System.Drawing.Point(105, 298);
+            this.comboBoxDoctorGender.Name = "comboBoxDoctorGender";
+            this.comboBoxDoctorGender.Size = new System.Drawing.Size(31, 21);
+            this.comboBoxDoctorGender.TabIndex = 7;
+            // 
             // lblDoctorType
             // 
             this.lblDoctorType.AutoSize = true;
-            this.lblDoctorType.Location = new System.Drawing.Point(32, 186);
+            this.lblDoctorType.Location = new System.Drawing.Point(32, 225);
             this.lblDoctorType.Name = "lblDoctorType";
             this.lblDoctorType.Size = new System.Drawing.Size(66, 13);
             this.lblDoctorType.TabIndex = 21;
@@ -119,52 +136,29 @@
             // comboBoxDoctorType
             // 
             this.comboBoxDoctorType.FormattingEnabled = true;
-            this.comboBoxDoctorType.Location = new System.Drawing.Point(105, 183);
+            this.comboBoxDoctorType.Location = new System.Drawing.Point(105, 222);
             this.comboBoxDoctorType.Name = "comboBoxDoctorType";
             this.comboBoxDoctorType.Size = new System.Drawing.Size(100, 21);
-            this.comboBoxDoctorType.TabIndex = 4;
-            // 
-            // btnDoctorAdd
-            // 
-            this.btnDoctorAdd.BackColor = System.Drawing.Color.White;
-            this.btnDoctorAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnDoctorAdd.Location = new System.Drawing.Point(239, 238);
-            this.btnDoctorAdd.Name = "btnDoctorAdd";
-            this.btnDoctorAdd.Size = new System.Drawing.Size(116, 43);
-            this.btnDoctorAdd.TabIndex = 7;
-            this.btnDoctorAdd.Text = "Add Doctor";
-            this.btnDoctorAdd.UseVisualStyleBackColor = false;
-            this.btnDoctorAdd.Click += new System.EventHandler(this.btnDoctorAdd_Click);
-            // 
-            // buttonDoctorCalculateShift
-            // 
-            this.buttonDoctorCalculateShift.BackColor = System.Drawing.Color.White;
-            this.buttonDoctorCalculateShift.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonDoctorCalculateShift.Location = new System.Drawing.Point(366, 238);
-            this.buttonDoctorCalculateShift.Name = "buttonDoctorCalculateShift";
-            this.buttonDoctorCalculateShift.Size = new System.Drawing.Size(116, 43);
-            this.buttonDoctorCalculateShift.TabIndex = 8;
-            this.buttonDoctorCalculateShift.Text = "Calculate Shift";
-            this.buttonDoctorCalculateShift.UseVisualStyleBackColor = false;
+            this.comboBoxDoctorType.TabIndex = 5;
             // 
             // txtDoctorShift
             // 
-            this.txtDoctorShift.Location = new System.Drawing.Point(105, 222);
+            this.txtDoctorShift.Location = new System.Drawing.Point(105, 261);
             this.txtDoctorShift.Name = "txtDoctorShift";
             this.txtDoctorShift.Size = new System.Drawing.Size(100, 20);
-            this.txtDoctorShift.TabIndex = 5;
+            this.txtDoctorShift.TabIndex = 6;
             // 
             // txtDoctorPhone
             // 
-            this.txtDoctorPhone.Location = new System.Drawing.Point(105, 146);
+            this.txtDoctorPhone.Location = new System.Drawing.Point(105, 185);
             this.txtDoctorPhone.Name = "txtDoctorPhone";
             this.txtDoctorPhone.Size = new System.Drawing.Size(100, 20);
-            this.txtDoctorPhone.TabIndex = 3;
+            this.txtDoctorPhone.TabIndex = 4;
             // 
             // lblDoctorShiftHour
             // 
             this.lblDoctorShiftHour.AutoSize = true;
-            this.lblDoctorShiftHour.Location = new System.Drawing.Point(32, 225);
+            this.lblDoctorShiftHour.Location = new System.Drawing.Point(32, 264);
             this.lblDoctorShiftHour.Name = "lblDoctorShiftHour";
             this.lblDoctorShiftHour.Size = new System.Drawing.Size(28, 13);
             this.lblDoctorShiftHour.TabIndex = 0;
@@ -173,7 +167,7 @@
             // lblDoctorGender
             // 
             this.lblDoctorGender.AutoSize = true;
-            this.lblDoctorGender.Location = new System.Drawing.Point(32, 268);
+            this.lblDoctorGender.Location = new System.Drawing.Point(32, 307);
             this.lblDoctorGender.Name = "lblDoctorGender";
             this.lblDoctorGender.Size = new System.Drawing.Size(42, 13);
             this.lblDoctorGender.TabIndex = 0;
@@ -182,7 +176,7 @@
             // lblDoctorPhone
             // 
             this.lblDoctorPhone.AutoSize = true;
-            this.lblDoctorPhone.Location = new System.Drawing.Point(32, 149);
+            this.lblDoctorPhone.Location = new System.Drawing.Point(32, 188);
             this.lblDoctorPhone.Name = "lblDoctorPhone";
             this.lblDoctorPhone.Size = new System.Drawing.Size(38, 13);
             this.lblDoctorPhone.TabIndex = 0;
@@ -402,21 +396,83 @@
             this.lblNursetTCIdentity.TabIndex = 9;
             this.lblNursetTCIdentity.Text = "TC Identity";
             // 
-            // comboBoxDoctorGender
+            // lblDoctorSalary
             // 
-            this.comboBoxDoctorGender.FormattingEnabled = true;
-            this.comboBoxDoctorGender.Location = new System.Drawing.Point(105, 259);
-            this.comboBoxDoctorGender.Name = "comboBoxDoctorGender";
-            this.comboBoxDoctorGender.Size = new System.Drawing.Size(31, 21);
-            this.comboBoxDoctorGender.TabIndex = 6;
+            this.lblDoctorSalary.AutoSize = true;
+            this.lblDoctorSalary.Location = new System.Drawing.Point(32, 150);
+            this.lblDoctorSalary.Name = "lblDoctorSalary";
+            this.lblDoctorSalary.Size = new System.Drawing.Size(36, 13);
+            this.lblDoctorSalary.TabIndex = 0;
+            this.lblDoctorSalary.Text = "Salary";
             // 
-            // listBoxDoctors
+            // txtDoctorSalary
             // 
-            this.listBoxDoctors.FormattingEnabled = true;
-            this.listBoxDoctors.Location = new System.Drawing.Point(235, 35);
-            this.listBoxDoctors.Name = "listBoxDoctors";
-            this.listBoxDoctors.Size = new System.Drawing.Size(247, 186);
-            this.listBoxDoctors.TabIndex = 23;
+            this.txtDoctorSalary.Location = new System.Drawing.Point(105, 147);
+            this.txtDoctorSalary.Name = "txtDoctorSalary";
+            this.txtDoctorSalary.Size = new System.Drawing.Size(100, 20);
+            this.txtDoctorSalary.TabIndex = 3;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.buttonSalaryDisplayCalculateShift);
+            this.tabPage1.Controls.Add(this.listBoxSalary);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(549, 358);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Salary Display";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxDoctors
+            // 
+            this.comboBoxDoctors.FormattingEnabled = true;
+            this.comboBoxDoctors.Location = new System.Drawing.Point(239, 147);
+            this.comboBoxDoctors.Name = "comboBoxDoctors";
+            this.comboBoxDoctors.Size = new System.Drawing.Size(221, 21);
+            this.comboBoxDoctors.TabIndex = 24;
+            this.comboBoxDoctors.SelectedIndexChanged += new System.EventHandler(this.comboBoxDoctors_SelectedIndexChanged);
+            // 
+            // listBoxSalary
+            // 
+            this.listBoxSalary.FormattingEnabled = true;
+            this.listBoxSalary.Location = new System.Drawing.Point(93, 43);
+            this.listBoxSalary.Name = "listBoxSalary";
+            this.listBoxSalary.Size = new System.Drawing.Size(356, 199);
+            this.listBoxSalary.TabIndex = 1;
+            // 
+            // buttonDoctorShowSalary
+            // 
+            this.buttonDoctorShowSalary.BackColor = System.Drawing.Color.White;
+            this.buttonDoctorShowSalary.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonDoctorShowSalary.Location = new System.Drawing.Point(366, 238);
+            this.buttonDoctorShowSalary.Name = "buttonDoctorShowSalary";
+            this.buttonDoctorShowSalary.Size = new System.Drawing.Size(116, 43);
+            this.buttonDoctorShowSalary.TabIndex = 8;
+            this.buttonDoctorShowSalary.Text = "Show Salary";
+            this.buttonDoctorShowSalary.UseVisualStyleBackColor = false;
+            // 
+            // btnDoctorAdd
+            // 
+            this.btnDoctorAdd.BackColor = System.Drawing.Color.White;
+            this.btnDoctorAdd.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnDoctorAdd.Location = new System.Drawing.Point(239, 238);
+            this.btnDoctorAdd.Name = "btnDoctorAdd";
+            this.btnDoctorAdd.Size = new System.Drawing.Size(116, 43);
+            this.btnDoctorAdd.TabIndex = 7;
+            this.btnDoctorAdd.Text = "Add Doctor";
+            this.btnDoctorAdd.UseVisualStyleBackColor = false;
+            this.btnDoctorAdd.Click += new System.EventHandler(this.btnDoctorAdd_Click);
+            // 
+            // buttonSalaryDisplayCalculateShift
+            // 
+            this.buttonSalaryDisplayCalculateShift.BackColor = System.Drawing.Color.White;
+            this.buttonSalaryDisplayCalculateShift.Location = new System.Drawing.Point(212, 248);
+            this.buttonSalaryDisplayCalculateShift.Name = "buttonSalaryDisplayCalculateShift";
+            this.buttonSalaryDisplayCalculateShift.Size = new System.Drawing.Size(101, 45);
+            this.buttonSalaryDisplayCalculateShift.TabIndex = 2;
+            this.buttonSalaryDisplayCalculateShift.Text = "Calculate Shift";
+            this.buttonSalaryDisplayCalculateShift.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -432,6 +488,7 @@
             this.tabPageAddDoctor.PerformLayout();
             this.tabPageAddNurse.ResumeLayout(false);
             this.tabPageAddNurse.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -450,7 +507,6 @@
         private System.Windows.Forms.Label lblDoctorName;
         private System.Windows.Forms.TextBox txtDoctorTCIdentity;
         private System.Windows.Forms.Label lblDoctorTCIdentity;
-        private System.Windows.Forms.Button buttonDoctorCalculateShift;
         private System.Windows.Forms.Button buttonNurseCalculateShift;
         private System.Windows.Forms.ListBox listBoxNurses;
         private System.Windows.Forms.RadioButton radioButtonNurseGenderWoman;
@@ -470,10 +526,16 @@
         private System.Windows.Forms.Label lblDoctorShiftHour;
         private System.Windows.Forms.TextBox txtNurseShift;
         private System.Windows.Forms.Label lblNurseShift;
-        private System.Windows.Forms.Button btnDoctorAdd;
         private System.Windows.Forms.Button btnNurseAdd;
         private System.Windows.Forms.ComboBox comboBoxDoctorGender;
-        private System.Windows.Forms.ListBox listBoxDoctors;
+        private System.Windows.Forms.TextBox txtDoctorSalary;
+        private System.Windows.Forms.Label lblDoctorSalary;
+        private System.Windows.Forms.ComboBox comboBoxDoctors;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ListBox listBoxSalary;
+        private System.Windows.Forms.Button btnDoctorAdd;
+        private System.Windows.Forms.Button buttonDoctorShowSalary;
+        private System.Windows.Forms.Button buttonSalaryDisplayCalculateShift;
     }
 }
 
