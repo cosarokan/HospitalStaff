@@ -36,7 +36,7 @@ namespace HospitalStaff.AbstractEntitites
     }
     public enum Gender
     {
-        F = 0,
-        M = 1
+        M = 0,
+        F = 1
     }
 }
