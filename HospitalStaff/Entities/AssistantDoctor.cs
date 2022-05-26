@@ -4,8 +4,22 @@ namespace HospitalStaff.Entities
 {
     public class AssistantDoctor : Doctor, IShift
     {
-        public int Shift { get; set; }
-
+        private int _shift;
+        public int Shift
+        {
+            get
+            {
+                return _shift;
+            }
+            set 
+            {
+                if (value == 0)
+                {
+                    value = 15;
+                }
+                _shift = value;
+            }
+        }
         public double CalculateShift()
         {
             try

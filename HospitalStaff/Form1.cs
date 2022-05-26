@@ -28,7 +28,7 @@ namespace HospitalStaff
                 txtDoctorSalary.Text == "" || txtDoctorPhone.Text == "" || comboBoxDoctorType.Text == "" ||
                  comboBoxDoctorType.Text == "" || comboBoxDoctorGender.Text == "")
             {
-                MessageBox.Show("Must not be empty area!");
+                MessageBox.Show("Mustn't be empty area!");
             }
             else
             {
@@ -68,6 +68,20 @@ namespace HospitalStaff
                         Data.Doctors.Add(doctor);
                         comboBoxDoctors.Items.Add(doctor);
                     }
+                    else if ((TypeOfDoctor)comboBoxDoctorType.SelectedIndex == TypeOfDoctor.SurgicalDoctor)
+                    {
+                        SurgicalDoctor doctor = new SurgicalDoctor();
+                        doctor.TCIdentity = txtDoctorTCIdentity.Text;
+                        doctor.Name = txtDoctorName.Text;
+                        doctor.Surname = txtDoctorSurname.Text;
+                        doctor.Salary = Convert.ToInt32(txtDoctorSalary.Text);
+                        doctor.Phone = txtDoctorPhone.Text;
+                        doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
+                        doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
+                        doctor.Title = "Surgical Doctor";
+                        Data.Doctors.Add(doctor);
+                        comboBoxDoctors.Items.Add(doctor);
+                    }
                     MessageBox.Show("Recorded");
                     ClearDoctorTexts();
                 }
@@ -79,7 +93,7 @@ namespace HospitalStaff
                 txtNurseSalary.Text == "" || txtNursePhone.Text == "" || txtNurseShift.Text == "" ||
                 comboBoxNurseGender.Text == "")
             {
-                MessageBox.Show("Must not be empty area!");
+                MessageBox.Show("Mustn't be empty area!");
             }
             else
             {
@@ -120,12 +134,17 @@ namespace HospitalStaff
             Person person = (Person)listBoxSalary.SelectedItem;
             if (personShift == null)
             {
-                MessageBox.Show($"You cannot calculate shift money for {person.Title}!");
+                MessageBox.Show($"You can't calculate shift money for {person.Title}!");
                 return;
             }
-
             double result = personShift.CalculateShift();
             MessageBox.Show($"{person.Title} shift money: {result}");
+        }
+        private void buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor_Click(object sender, EventArgs e)
+        {
+            SurgicalDoctor doctor = (SurgicalDoctor)listBoxSalary.SelectedItem;
+            double result = doctor.CalculateExtraPay();
+            MessageBox.Show($"{doctor.Title} extra money: {result}");
         }
         void ShowDoctorGenderType()
         {

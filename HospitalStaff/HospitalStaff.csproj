@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractEntitites\Person.cs" />
-    <Compile Include="Data.cs" />
+    <Compile Include="Data\Data.cs" />
     <Compile Include="Entities\AssistantDoctor.cs" />
     <Compile Include="Entities\Doctor.cs" />
     <Compile Include="Entities\Nurse.cs" />
@@ -58,6 +58,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IExtraPay.cs" />
     <Compile Include="Interfaces\IShift.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\TypeOfDoctor.cs" />

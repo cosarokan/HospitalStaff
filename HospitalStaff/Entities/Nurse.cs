@@ -5,7 +5,22 @@ namespace HospitalStaff.Entities
 {
     public class Nurse : Person, IShift
     {
-        public int Shift { get; set; }
+        private int _shift;
+        public int Shift 
+        {
+            get 
+            {
+                return _shift;
+            } 
+            set 
+            {
+                if (value == 0)
+                {
+                    value = 20;
+                }
+                _shift = value;
+            } 
+        }
 
         public override string ToString()
         {
