@@ -1,5 +1,6 @@
 ﻿using HospitalStaff.AbstractEntitites;
 using HospitalStaff.Entities;
+using HospitalStaff.Interfaces;
 using HospitalStaff.Models;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,12 @@ namespace HospitalStaff
             ShowDoctorGenderType();
             ShowNurseGenderType();
             Data.Doctors = new List<Doctor>();
-            Nurse.Nurses = new List<Nurse>();   
+            Data.Nurses = new List<Nurse>();
         }
         private void btnDoctorAdd_Click(object sender, EventArgs e)
         {
-            if (txtDoctorTCIdentity.Text == "" || txtDoctorName.Text ==  "" || txtDoctorSurname.Text == "" || 
-                txtDoctorSalary.Text == "" || txtDoctorPhone.Text == "" || comboBoxDoctorType.Text == "" || 
+            if (txtDoctorTCIdentity.Text == "" || txtDoctorName.Text == "" || txtDoctorSurname.Text == "" ||
+                txtDoctorSalary.Text == "" || txtDoctorPhone.Text == "" || comboBoxDoctorType.Text == "" ||
                  comboBoxDoctorType.Text == "" || comboBoxDoctorGender.Text == "")
             {
                 MessageBox.Show("Must not be empty area!");
@@ -49,6 +50,7 @@ namespace HospitalStaff
                         doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
                         doctor.Shift = Convert.ToInt32(txtDoctorShift.Text);
                         doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
+                        doctor.Title = "Asistant Doctor";
                         Data.Doctors.Add(doctor);
                         comboBoxDoctors.Items.Add(doctor);
                     }
@@ -62,6 +64,7 @@ namespace HospitalStaff
                         doctor.Phone = txtDoctorPhone.Text;
                         doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
                         doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
+                        doctor.Title = "Doctor";
                         Data.Doctors.Add(doctor);
                         comboBoxDoctors.Items.Add(doctor);
                     }
@@ -73,7 +76,7 @@ namespace HospitalStaff
         private void btnNurseAdd_Click(object sender, EventArgs e)
         {
             if (txtNurseTCIdentity.Text == "" || txtNurseName.Text == "" || txtNurseSurname.Text == "" ||
-                txtNurseSalary.Text == "" || txtNursePhone.Text == "" || txtNurseShift.Text == "" || 
+                txtNurseSalary.Text == "" || txtNursePhone.Text == "" || txtNurseShift.Text == "" ||
                 comboBoxNurseGender.Text == "")
             {
                 MessageBox.Show("Must not be empty area!");
@@ -95,15 +98,34 @@ namespace HospitalStaff
                     nurse.Phone = txtNursePhone.Text;
                     nurse.Shift = Convert.ToInt32(txtNurseShift.Text);
                     nurse.Gender = (Gender)comboBoxNurseGender.SelectedIndex;
-                    Nurse.Nurses.Add(nurse);
+                    nurse.Title = "Nurse";
+                    Data.Nurses.Add(nurse);
                     MessageBox.Show("Recorded");
-                    comboBoxNurses.Items.Add(
-                        $"Nurse: {nurse.Name.Substring(0, 1).ToUpper() + nurse.Name.Substring(1).ToLower()} " +
-                        $"{nurse.Surname.Substring(0, 1).ToUpper() + nurse.Surname.Substring(1).ToLower()}, Salary: " +
-                        $"{nurse.Salary}, Shift: {nurse.Shift}");
+                    comboBoxNurses.Items.Add(nurse);
                     ClearNurseTexts();
                 }
             }
+        }
+        private void comboBoxDoctors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxSalary.Items.Add(comboBoxDoctors.SelectedItem);
+        }
+        private void comboBoxNurses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxSalary.Items.Add(comboBoxNurses.SelectedItem);
+        }
+        private void buttonSalaryDisplayCalculateShift_Click(object sender, EventArgs e)
+        {
+            IShift personShift = listBoxSalary.SelectedItem as IShift;
+            Person person = (Person)listBoxSalary.SelectedItem;
+            if (personShift == null)
+            {
+                MessageBox.Show($"You cannot calculate shift money for {person.Title}!");
+                return;
+            }
+
+            double result = personShift.CalculateShift();
+            MessageBox.Show($"{person.Title} shift money: {result}");
         }
         void ShowDoctorGenderType()
         {
@@ -140,33 +162,7 @@ namespace HospitalStaff
             txtNursePhone.Clear();
             txtNurseShift.Clear();
             comboBoxNurseGender.SelectedIndex = -1;
-            
-        }
-        private void comboBoxDoctors_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            listBoxSalary.Items.Add(comboBoxDoctors.SelectedItem);
-        }
-        private void comboBoxNurses_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            listBoxSalary.Items.Add(comboBoxNurses.SelectedItem);
-        }
 
-        private void listBoxSalary_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonSalaryDisplayCalculateShift_Click(object sender, EventArgs e)
-        {
-            Doctor doctor = (Doctor)listBoxSalary.SelectedItem;
-            if (doctor.TypeOfDoctor == TypeOfDoctor.Doctor)
-            {
-
-            }
-            else if (doctor.TypeOfDoctor == TypeOfDoctor.AsistantDoctor)
-            {
-                AssistantDoctor assistantDoctor = (AssistantDoctor)listBoxSalary.SelectedItem;
-            }
         }
     }
 }

@@ -35,7 +35,6 @@
             this.lblDoctorType = new System.Windows.Forms.Label();
             this.comboBoxDoctorType = new System.Windows.Forms.ComboBox();
             this.btnDoctorAdd = new System.Windows.Forms.Button();
-            this.buttonDoctorShowSalary = new System.Windows.Forms.Button();
             this.txtDoctorShift = new System.Windows.Forms.TextBox();
             this.txtDoctorPhone = new System.Windows.Forms.TextBox();
             this.lblDoctorShiftHour = new System.Windows.Forms.Label();
@@ -55,7 +54,6 @@
             this.btnNurseAdd = new System.Windows.Forms.Button();
             this.txtNurseShift = new System.Windows.Forms.TextBox();
             this.lblNurseShift = new System.Windows.Forms.Label();
-            this.buttonNurseCalculateShift = new System.Windows.Forms.Button();
             this.txtNursePhone = new System.Windows.Forms.TextBox();
             this.lblNurseGender = new System.Windows.Forms.Label();
             this.lblNursePhone = new System.Windows.Forms.Label();
@@ -95,7 +93,6 @@
             this.tabPageAddDoctor.Controls.Add(this.lblDoctorType);
             this.tabPageAddDoctor.Controls.Add(this.comboBoxDoctorType);
             this.tabPageAddDoctor.Controls.Add(this.btnDoctorAdd);
-            this.tabPageAddDoctor.Controls.Add(this.buttonDoctorShowSalary);
             this.tabPageAddDoctor.Controls.Add(this.txtDoctorShift);
             this.tabPageAddDoctor.Controls.Add(this.txtDoctorPhone);
             this.tabPageAddDoctor.Controls.Add(this.lblDoctorShiftHour);
@@ -155,24 +152,13 @@
             // 
             this.btnDoctorAdd.BackColor = System.Drawing.Color.White;
             this.btnDoctorAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnDoctorAdd.Location = new System.Drawing.Point(239, 238);
+            this.btnDoctorAdd.Location = new System.Drawing.Point(290, 195);
             this.btnDoctorAdd.Name = "btnDoctorAdd";
             this.btnDoctorAdd.Size = new System.Drawing.Size(116, 43);
             this.btnDoctorAdd.TabIndex = 7;
             this.btnDoctorAdd.Text = "Add Doctor";
             this.btnDoctorAdd.UseVisualStyleBackColor = false;
             this.btnDoctorAdd.Click += new System.EventHandler(this.btnDoctorAdd_Click);
-            // 
-            // buttonDoctorShowSalary
-            // 
-            this.buttonDoctorShowSalary.BackColor = System.Drawing.Color.White;
-            this.buttonDoctorShowSalary.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonDoctorShowSalary.Location = new System.Drawing.Point(366, 238);
-            this.buttonDoctorShowSalary.Name = "buttonDoctorShowSalary";
-            this.buttonDoctorShowSalary.Size = new System.Drawing.Size(116, 43);
-            this.buttonDoctorShowSalary.TabIndex = 8;
-            this.buttonDoctorShowSalary.Text = "Show Salary";
-            this.buttonDoctorShowSalary.UseVisualStyleBackColor = false;
             // 
             // txtDoctorShift
             // 
@@ -288,7 +274,6 @@
             this.tabPageAddNurse.Controls.Add(this.btnNurseAdd);
             this.tabPageAddNurse.Controls.Add(this.txtNurseShift);
             this.tabPageAddNurse.Controls.Add(this.lblNurseShift);
-            this.tabPageAddNurse.Controls.Add(this.buttonNurseCalculateShift);
             this.tabPageAddNurse.Controls.Add(this.txtNursePhone);
             this.tabPageAddNurse.Controls.Add(this.lblNurseGender);
             this.tabPageAddNurse.Controls.Add(this.lblNursePhone);
@@ -328,7 +313,7 @@
             // btnNurseAdd
             // 
             this.btnNurseAdd.BackColor = System.Drawing.Color.White;
-            this.btnNurseAdd.Location = new System.Drawing.Point(239, 236);
+            this.btnNurseAdd.Location = new System.Drawing.Point(301, 187);
             this.btnNurseAdd.Name = "btnNurseAdd";
             this.btnNurseAdd.Size = new System.Drawing.Size(116, 43);
             this.btnNurseAdd.TabIndex = 7;
@@ -352,20 +337,10 @@
             this.lblNurseShift.TabIndex = 18;
             this.lblNurseShift.Text = "Shift";
             // 
-            // buttonNurseCalculateShift
-            // 
-            this.buttonNurseCalculateShift.BackColor = System.Drawing.Color.White;
-            this.buttonNurseCalculateShift.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonNurseCalculateShift.Location = new System.Drawing.Point(366, 236);
-            this.buttonNurseCalculateShift.Name = "buttonNurseCalculateShift";
-            this.buttonNurseCalculateShift.Size = new System.Drawing.Size(116, 43);
-            this.buttonNurseCalculateShift.TabIndex = 17;
-            this.buttonNurseCalculateShift.Text = "Calculate Shift";
-            this.buttonNurseCalculateShift.UseVisualStyleBackColor = false;
-            // 
             // txtNursePhone
             // 
             this.txtNursePhone.Location = new System.Drawing.Point(105, 177);
+            this.txtNursePhone.MaxLength = 10;
             this.txtNursePhone.Name = "txtNursePhone";
             this.txtNursePhone.Size = new System.Drawing.Size(100, 20);
             this.txtNursePhone.TabIndex = 4;
@@ -439,6 +414,7 @@
             // txtNurseTCIdentity
             // 
             this.txtNurseTCIdentity.Location = new System.Drawing.Point(105, 33);
+            this.txtNurseTCIdentity.MaxLength = 11;
             this.txtNurseTCIdentity.Name = "txtNurseTCIdentity";
             this.txtNurseTCIdentity.Size = new System.Drawing.Size(100, 20);
             this.txtNurseTCIdentity.TabIndex = 0;
@@ -482,7 +458,6 @@
             this.listBoxSalary.Name = "listBoxSalary";
             this.listBoxSalary.Size = new System.Drawing.Size(360, 199);
             this.listBoxSalary.TabIndex = 1;
-            this.listBoxSalary.SelectedIndexChanged += new System.EventHandler(this.listBoxSalary_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -517,7 +492,6 @@
         private System.Windows.Forms.Label lblDoctorName;
         private System.Windows.Forms.TextBox txtDoctorTCIdentity;
         private System.Windows.Forms.Label lblDoctorTCIdentity;
-        private System.Windows.Forms.Button buttonNurseCalculateShift;
         private System.Windows.Forms.TextBox txtNursePhone;
         private System.Windows.Forms.Label lblNurseGender;
         private System.Windows.Forms.Label lblNursePhone;
@@ -540,7 +514,6 @@
         private System.Windows.Forms.ComboBox comboBoxDoctors;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button btnDoctorAdd;
-        private System.Windows.Forms.Button buttonDoctorShowSalary;
         private System.Windows.Forms.Button buttonSalaryDisplayCalculateShift;
         private System.Windows.Forms.ComboBox comboBoxNurses;
         private System.Windows.Forms.ComboBox comboBoxNurseGender;

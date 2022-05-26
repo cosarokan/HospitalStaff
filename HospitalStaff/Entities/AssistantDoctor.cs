@@ -4,13 +4,13 @@ namespace HospitalStaff.Entities
 {
     public class AssistantDoctor : Doctor, IShift
     {
-        public int? Shift { get; set; }
+        public int Shift { get; set; }
 
-        public double CalculateShift(byte hour = 15)
+        public double CalculateShift()
         {
             try
             {
-                return hour * ((Salary / 100) * 8);
+                return Shift * ((Salary / 100) * 8);
             }
             catch (System.Exception)
             {
@@ -23,7 +23,7 @@ namespace HospitalStaff.Entities
             return ($"{Name.Substring(0, 1).ToUpper() + Name.Substring(1).ToLower()} " +
                         $"{Surname.Substring(0, 1).ToUpper() + Surname.Substring(1).ToLower()}, " +
                         $"Doctor Type: {TypeOfDoctor}, Salary: " +
-                        $"{Salary}");
+                        $"{Salary}, Shift: {Shift}");
         }
     }
 }

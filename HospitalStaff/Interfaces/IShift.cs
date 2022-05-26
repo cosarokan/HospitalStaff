@@ -2,6 +2,7 @@
 {
     public interface IShift
     {
-        double CalculateShift(byte hour);
+        int Shift { get; set; }
+        double CalculateShift();
     }
 }

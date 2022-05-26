@@ -26,6 +26,7 @@ namespace HospitalStaff.AbstractEntitites
         public string Phone { get; set; }
         public int Salary { get; set; }
         public Gender Gender { get; set; }
+        public string Title { get; set; }
         static bool IsElevenCharacter(string text, byte countOfCharacter = 11)
         {
             if (text.Length != countOfCharacter)
