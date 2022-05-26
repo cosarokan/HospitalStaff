@@ -184,6 +184,7 @@
             // txtDoctorPhone
             // 
             this.txtDoctorPhone.Location = new System.Drawing.Point(105, 185);
+            this.txtDoctorPhone.MaxLength = 10;
             this.txtDoctorPhone.Name = "txtDoctorPhone";
             this.txtDoctorPhone.Size = new System.Drawing.Size(100, 20);
             this.txtDoctorPhone.TabIndex = 4;
@@ -266,6 +267,7 @@
             // txtDoctorTCIdentity
             // 
             this.txtDoctorTCIdentity.Location = new System.Drawing.Point(105, 35);
+            this.txtDoctorTCIdentity.MaxLength = 11;
             this.txtDoctorTCIdentity.Name = "txtDoctorTCIdentity";
             this.txtDoctorTCIdentity.Size = new System.Drawing.Size(100, 20);
             this.txtDoctorTCIdentity.TabIndex = 0;
@@ -471,6 +473,7 @@
             this.buttonSalaryDisplayCalculateShift.TabIndex = 2;
             this.buttonSalaryDisplayCalculateShift.Text = "Calculate Shift";
             this.buttonSalaryDisplayCalculateShift.UseVisualStyleBackColor = false;
+            this.buttonSalaryDisplayCalculateShift.Click += new System.EventHandler(this.buttonSalaryDisplayCalculateShift_Click);
             // 
             // listBoxSalary
             // 
@@ -479,6 +482,7 @@
             this.listBoxSalary.Name = "listBoxSalary";
             this.listBoxSalary.Size = new System.Drawing.Size(360, 199);
             this.listBoxSalary.TabIndex = 1;
+            this.listBoxSalary.SelectedIndexChanged += new System.EventHandler(this.listBoxSalary_SelectedIndexChanged);
             // 
             // Form1
             // 

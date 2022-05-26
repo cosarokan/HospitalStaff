@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using HospitalStaff.Models;
+using System.Windows.Forms;
 
 namespace HospitalStaff.AbstractEntitites
 {
@@ -34,9 +35,5 @@ namespace HospitalStaff.AbstractEntitites
             return true;
         }
     }
-    public enum Gender
-    {
-        M = 0,
-        F = 1
-    }
+
 }

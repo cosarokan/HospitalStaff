@@ -1,5 +1,6 @@
 ﻿using HospitalStaff.AbstractEntitites;
 using HospitalStaff.Entities;
+using HospitalStaff.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -17,9 +18,8 @@ namespace HospitalStaff
             ShowTypeOfDoctor();
             ShowDoctorGenderType();
             ShowNurseGenderType();
-            Doctor.Doctors = new List<Doctor>();
+            Data.Doctors = new List<Doctor>();
             Nurse.Nurses = new List<Nurse>();   
-            
         }
         private void btnDoctorAdd_Click(object sender, EventArgs e)
         {
@@ -38,20 +38,34 @@ namespace HospitalStaff
                 }
                 else
                 {
-                    Doctor doctor = new Doctor();
-                    doctor.TCIdentity = txtDoctorTCIdentity.Text;
-                    doctor.Name = txtDoctorName.Text;
-                    doctor.Surname = txtDoctorSurname.Text;
-                    doctor.Salary = Convert.ToInt32(txtDoctorSalary.Text);
-                    doctor.Phone = txtDoctorPhone.Text;
-                    doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
-                    doctor.Shift = Convert.ToInt32(txtDoctorShift.Text);
-                    doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
-                    Doctor.Doctors.Add(doctor);
+                    if ((TypeOfDoctor)comboBoxDoctorType.SelectedIndex == TypeOfDoctor.AsistantDoctor)
+                    {
+                        AssistantDoctor doctor = new AssistantDoctor();
+                        doctor.TCIdentity = txtDoctorTCIdentity.Text;
+                        doctor.Name = txtDoctorName.Text;
+                        doctor.Surname = txtDoctorSurname.Text;
+                        doctor.Salary = Convert.ToInt32(txtDoctorSalary.Text);
+                        doctor.Phone = txtDoctorPhone.Text;
+                        doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
+                        doctor.Shift = Convert.ToInt32(txtDoctorShift.Text);
+                        doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
+                        Data.Doctors.Add(doctor);
+                        comboBoxDoctors.Items.Add(doctor);
+                    }
+                    else if ((TypeOfDoctor)comboBoxDoctorType.SelectedIndex == TypeOfDoctor.Doctor)
+                    {
+                        Doctor doctor = new Doctor();
+                        doctor.TCIdentity = txtDoctorTCIdentity.Text;
+                        doctor.Name = txtDoctorName.Text;
+                        doctor.Surname = txtDoctorSurname.Text;
+                        doctor.Salary = Convert.ToInt32(txtDoctorSalary.Text);
+                        doctor.Phone = txtDoctorPhone.Text;
+                        doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
+                        doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
+                        Data.Doctors.Add(doctor);
+                        comboBoxDoctors.Items.Add(doctor);
+                    }
                     MessageBox.Show("Recorded");
-                    comboBoxDoctors.Items.Add($"{doctor.Name} " +
-                        $"{doctor.Surname}, Doctor Type: {doctor.TypeOfDoctor}, Salary: " +
-                        $"{doctor.Salary}, Shift: {doctor.Shift}");
                     ClearDoctorTexts();
                 }
             }
@@ -83,8 +97,9 @@ namespace HospitalStaff
                     nurse.Gender = (Gender)comboBoxNurseGender.SelectedIndex;
                     Nurse.Nurses.Add(nurse);
                     MessageBox.Show("Recorded");
-                    comboBoxNurses.Items.Add($"{nurse.Name} " +
-                        $"{nurse.Surname}, Salary: " +
+                    comboBoxNurses.Items.Add(
+                        $"Nurse: {nurse.Name.Substring(0, 1).ToUpper() + nurse.Name.Substring(1).ToLower()} " +
+                        $"{nurse.Surname.Substring(0, 1).ToUpper() + nurse.Surname.Substring(1).ToLower()}, Salary: " +
                         $"{nurse.Salary}, Shift: {nurse.Shift}");
                     ClearNurseTexts();
                 }
@@ -131,10 +146,27 @@ namespace HospitalStaff
         {
             listBoxSalary.Items.Add(comboBoxDoctors.SelectedItem);
         }
-
         private void comboBoxNurses_SelectedIndexChanged(object sender, EventArgs e)
         {
             listBoxSalary.Items.Add(comboBoxNurses.SelectedItem);
+        }
+
+        private void listBoxSalary_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSalaryDisplayCalculateShift_Click(object sender, EventArgs e)
+        {
+            Doctor doctor = (Doctor)listBoxSalary.SelectedItem;
+            if (doctor.TypeOfDoctor == TypeOfDoctor.Doctor)
+            {
+
+            }
+            else if (doctor.TypeOfDoctor == TypeOfDoctor.AsistantDoctor)
+            {
+                AssistantDoctor assistantDoctor = (AssistantDoctor)listBoxSalary.SelectedItem;
+            }
         }
     }
 }

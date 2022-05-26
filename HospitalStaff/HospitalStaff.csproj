@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractEntitites\Person.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="Entities\AssistantDoctor.cs" />
     <Compile Include="Entities\Doctor.cs" />
     <Compile Include="Entities\Nurse.cs" />
@@ -58,6 +59,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IShift.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\TypeOfDoctor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
