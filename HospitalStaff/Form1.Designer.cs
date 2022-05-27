@@ -66,9 +66,9 @@
             this.txtNurseTCIdentity = new System.Windows.Forms.TextBox();
             this.lblNursetTCIdentity = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor = new System.Windows.Forms.Button();
             this.buttonSalaryDisplayCalculateShift = new System.Windows.Forms.Button();
             this.listBoxSalary = new System.Windows.Forms.ListBox();
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageAddDoctor.SuspendLayout();
             this.tabPageAddNurse.SuspendLayout();
@@ -148,6 +148,7 @@
             this.comboBoxDoctorType.Name = "comboBoxDoctorType";
             this.comboBoxDoctorType.Size = new System.Drawing.Size(100, 21);
             this.comboBoxDoctorType.TabIndex = 5;
+            this.comboBoxDoctorType.SelectedIndexChanged += new System.EventHandler(this.comboBoxDoctorType_SelectedIndexChanged);
             // 
             // btnDoctorAdd
             // 
@@ -442,6 +443,17 @@
             this.tabPage1.Text = "Salary Display";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor
+            // 
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.BackColor = System.Drawing.Color.White;
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Location = new System.Drawing.Point(295, 256);
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Name = "buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor";
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Size = new System.Drawing.Size(101, 43);
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.TabIndex = 3;
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Text = "Calculate Extra Pay";
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.UseVisualStyleBackColor = false;
+            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Click += new System.EventHandler(this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor_Click);
+            // 
             // buttonSalaryDisplayCalculateShift
             // 
             this.buttonSalaryDisplayCalculateShift.BackColor = System.Drawing.Color.White;
@@ -460,17 +472,6 @@
             this.listBoxSalary.Name = "listBoxSalary";
             this.listBoxSalary.Size = new System.Drawing.Size(360, 199);
             this.listBoxSalary.TabIndex = 1;
-            // 
-            // buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor
-            // 
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.BackColor = System.Drawing.Color.White;
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Location = new System.Drawing.Point(295, 256);
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Name = "buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor";
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Size = new System.Drawing.Size(101, 43);
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.TabIndex = 3;
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Text = "Calculate Extra Pay";
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.UseVisualStyleBackColor = false;
-            this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor.Click += new System.EventHandler(this.buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor_Click);
             // 
             // Form1
             // 

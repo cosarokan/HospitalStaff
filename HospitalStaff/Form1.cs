@@ -5,7 +5,6 @@ using HospitalStaff.Models;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
 namespace HospitalStaff
 {
     public partial class Form1 : Form
@@ -26,7 +25,7 @@ namespace HospitalStaff
         {
             if (txtDoctorTCIdentity.Text == "" || txtDoctorName.Text == "" || txtDoctorSurname.Text == "" ||
                 txtDoctorSalary.Text == "" || txtDoctorPhone.Text == "" || comboBoxDoctorType.Text == "" ||
-                 comboBoxDoctorType.Text == "" || txtDoctorShift.Text == "" || comboBoxDoctorGender.Text == "")
+                 comboBoxDoctorType.Text == "" || comboBoxDoctorGender.Text == "")
             {
                 MessageBox.Show("Mustn't be empty area!");
             }
@@ -174,7 +173,7 @@ namespace HospitalStaff
             Person person = (Person)listBoxSalary.SelectedItem;
             if (personShift == null)
             {
-                MessageBox.Show($"Select the doctor or nurse!");
+                MessageBox.Show($"Select the assistant doctor or nurse!");
             }
             else
             {
@@ -190,15 +189,34 @@ namespace HospitalStaff
         }
         private void buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor_Click(object sender, EventArgs e)
         {
-            SurgicalDoctor doctor = (SurgicalDoctor)listBoxSalary.SelectedItem;
-            if (doctor == null)
+            IExtraPay personExtra = listBoxSalary.SelectedItem as IExtraPay;
+            Person person = (Person)listBoxSalary.SelectedItem;
+            if (personExtra == null)
             {
                 MessageBox.Show("Select the surgical doctor!");
             }
             else
             {
-                double result = doctor.CalculateExtraPay();
-                MessageBox.Show($"{doctor.Title} extra money: {result}");
+                double result = personExtra.CalculateExtraPay();
+                MessageBox.Show($"{person.Title} extra money: {result}");
+            }
+        }
+        private void comboBoxDoctorType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(TypeOfDoctor.Doctor) == comboBoxDoctorType.SelectedIndex)
+            {
+                lblDoctorShiftHour.Enabled = false;
+                txtDoctorShift.Enabled = false;
+            }
+            else if (Convert.ToInt32(TypeOfDoctor.AsistantDoctor) == comboBoxDoctorType.SelectedIndex)
+            {
+                lblDoctorShiftHour.Enabled = true;
+                txtDoctorShift.Enabled = true;
+            }
+            else if (Convert.ToInt32(TypeOfDoctor.SurgicalDoctor) == comboBoxDoctorType.SelectedIndex)
+            {
+                lblDoctorShiftHour.Enabled = false;
+                txtDoctorShift.Enabled = false;
             }
         }
         void ShowDoctorGenderType()
@@ -238,6 +256,6 @@ namespace HospitalStaff
             comboBoxNurseGender.SelectedIndex = -1;
 
         }
-
+        
     }
 }
