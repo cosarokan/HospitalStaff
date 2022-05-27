@@ -26,7 +26,7 @@ namespace HospitalStaff
         {
             if (txtDoctorTCIdentity.Text == "" || txtDoctorName.Text == "" || txtDoctorSurname.Text == "" ||
                 txtDoctorSalary.Text == "" || txtDoctorPhone.Text == "" || comboBoxDoctorType.Text == "" ||
-                 comboBoxDoctorType.Text == "" || comboBoxDoctorGender.Text == "")
+                 comboBoxDoctorType.Text == "" || txtDoctorShift.Text == "" || comboBoxDoctorGender.Text == "")
             {
                 MessageBox.Show("Mustn't be empty area!");
             }
@@ -43,14 +43,24 @@ namespace HospitalStaff
                     {
                         AssistantDoctor doctor = new AssistantDoctor();
                         doctor.TCIdentity = txtDoctorTCIdentity.Text;
+                        if (txtDoctorTCIdentity.TextLength != 11)
+                        {
+                            MessageBox.Show("TC identity must be eleven digits!");
+                            return;
+                        }
                         doctor.Name = txtDoctorName.Text;
                         doctor.Surname = txtDoctorSurname.Text;
                         doctor.Salary = Convert.ToInt32(txtDoctorSalary.Text);
                         doctor.Phone = txtDoctorPhone.Text;
+                        if (txtDoctorPhone.TextLength != 10)
+                        {
+                            MessageBox.Show("Phone number must be ten digits!");
+                            return;
+                        }
                         doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
                         doctor.Shift = Convert.ToInt32(txtDoctorShift.Text);
                         doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
-                        doctor.Title = "Asistant Doctor";
+                        doctor.Title = "Assistant Doctor";
                         Data.Doctors.Add(doctor);
                         comboBoxDoctors.Items.Add(doctor);
                     }
@@ -58,10 +68,20 @@ namespace HospitalStaff
                     {
                         Doctor doctor = new Doctor();
                         doctor.TCIdentity = txtDoctorTCIdentity.Text;
+                        if (txtDoctorTCIdentity.TextLength != 11)
+                        {
+                            MessageBox.Show("TC identity must be eleven digits!");
+                            return;
+                        }
                         doctor.Name = txtDoctorName.Text;
                         doctor.Surname = txtDoctorSurname.Text;
                         doctor.Salary = Convert.ToInt32(txtDoctorSalary.Text);
                         doctor.Phone = txtDoctorPhone.Text;
+                        if (txtDoctorPhone.TextLength != 10)
+                        {
+                            MessageBox.Show("Phone number must be ten digits!");
+                            return;
+                        }
                         doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
                         doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
                         doctor.Title = "Doctor";
@@ -72,10 +92,20 @@ namespace HospitalStaff
                     {
                         SurgicalDoctor doctor = new SurgicalDoctor();
                         doctor.TCIdentity = txtDoctorTCIdentity.Text;
+                        if (txtDoctorTCIdentity.TextLength != 11)
+                        {
+                            MessageBox.Show("TC identity must be eleven digits!");
+                            return;
+                        }
                         doctor.Name = txtDoctorName.Text;
                         doctor.Surname = txtDoctorSurname.Text;
                         doctor.Salary = Convert.ToInt32(txtDoctorSalary.Text);
                         doctor.Phone = txtDoctorPhone.Text;
+                        if (txtDoctorPhone.TextLength != 10)
+                        {
+                            MessageBox.Show("Phone number must be ten digits!");
+                            return;
+                        }
                         doctor.TypeOfDoctor = (TypeOfDoctor)comboBoxDoctorType.SelectedIndex;
                         doctor.Gender = (Gender)comboBoxDoctorGender.SelectedIndex;
                         doctor.Title = "Surgical Doctor";
@@ -106,10 +136,20 @@ namespace HospitalStaff
                 {
                     Nurse nurse = new Nurse();
                     nurse.TCIdentity = txtNurseTCIdentity.Text;
+                    if (txtNurseTCIdentity.TextLength != 11)
+                    {
+                        MessageBox.Show("TC identity must be eleven digits!");
+                        return;
+                    }
                     nurse.Name = txtNurseName.Text;
                     nurse.Surname = txtNurseSurname.Text;
                     nurse.Salary = Convert.ToInt32(txtNurseSalary.Text);
                     nurse.Phone = txtNursePhone.Text;
+                    if (txtNursePhone.TextLength != 10)
+                    {
+                        MessageBox.Show("Phone number must be ten digits!");
+                        return;
+                    }
                     nurse.Shift = Convert.ToInt32(txtNurseShift.Text);
                     nurse.Gender = (Gender)comboBoxNurseGender.SelectedIndex;
                     nurse.Title = "Nurse";
@@ -134,17 +174,32 @@ namespace HospitalStaff
             Person person = (Person)listBoxSalary.SelectedItem;
             if (personShift == null)
             {
-                MessageBox.Show($"You can't calculate shift money for {person.Title}!");
-                return;
+                MessageBox.Show($"Select the doctor or nurse!");
             }
-            double result = personShift.CalculateShift();
-            MessageBox.Show($"{person.Title} shift money: {result}");
+            else
+            {
+                if (personShift == null)
+                {
+                    MessageBox.Show($"You can't calculate shift money for {person.Title}!");
+                    return;
+                }
+                double result = personShift.CalculateShift();
+                MessageBox.Show($"{person.Title} shift money: {result}");
+            }
+
         }
         private void buttonSalaryDisplayCalculateExtraPayForSurgicalDoctor_Click(object sender, EventArgs e)
         {
             SurgicalDoctor doctor = (SurgicalDoctor)listBoxSalary.SelectedItem;
-            double result = doctor.CalculateExtraPay();
-            MessageBox.Show($"{doctor.Title} extra money: {result}");
+            if (doctor == null)
+            {
+                MessageBox.Show("Select the surgical doctor!");
+            }
+            else
+            {
+                double result = doctor.CalculateExtraPay();
+                MessageBox.Show($"{doctor.Title} extra money: {result}");
+            }
         }
         void ShowDoctorGenderType()
         {
@@ -183,5 +238,6 @@ namespace HospitalStaff
             comboBoxNurseGender.SelectedIndex = -1;
 
         }
+
     }
 }

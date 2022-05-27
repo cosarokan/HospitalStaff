@@ -15,19 +15,36 @@ namespace HospitalStaff.AbstractEntitites
             set 
             {
                 if (!IsElevenCharacter(value))
-                {
-                    MessageBox.Show("TC identity must be eleven digits!");
-                }
                 _tcIdentity = value;
             } 
         }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Phone { get; set; }
+        private string _phone;
+        public string Phone 
+        {
+            get 
+            {
+                return _phone;
+            }
+            set 
+            {
+                if (!IsTenCharacter(value))
+                _phone = value;
+            } 
+        }
         public int Salary { get; set; }
         public Gender Gender { get; set; }
         public string Title { get; set; }
-        static bool IsElevenCharacter(string text, byte countOfCharacter = 11)
+        public static bool IsElevenCharacter(string text, byte countOfCharacter = 11)
+        {
+            if (text.Length != countOfCharacter)
+            {
+                return false;
+            }
+            return true;
+        }
+        static bool IsTenCharacter(string text, byte countOfCharacter = 10)
         {
             if (text.Length != countOfCharacter)
             {

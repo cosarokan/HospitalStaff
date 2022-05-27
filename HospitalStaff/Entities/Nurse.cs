@@ -21,14 +21,12 @@ namespace HospitalStaff.Entities
                 _shift = value;
             } 
         }
-
         public override string ToString()
         {
             return ($"{Name.Substring(0, 1).ToUpper() + Name.Substring(1).ToLower()} " +
                         $"{Surname.Substring(0, 1).ToUpper() + Surname.Substring(1).ToLower()}, Salary: " +
                         $"{Salary}, Shift: {Shift}");
         }
-
         public double CalculateShift()
         {
             try
