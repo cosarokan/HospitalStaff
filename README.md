@@ -5,6 +5,8 @@ Doctors and nurses information are adding to a static list and calculating the s
 
 ![assistant](https://user-images.githubusercontent.com/82242098/170690646-a56264b8-3df1-4026-aab1-0970b84f4a2e.jpg)
 
+![surgical-doctor](https://user-images.githubusercontent.com/82242098/170752008-854a8b87-bc06-41ab-a4ed-040213f8f29f.jpg)
+
 ![salarry-calculate-doctor](https://user-images.githubusercontent.com/82242098/170690721-e30147bc-663d-4902-9eb3-c83b0db8232d.jpg)
 
 ![salary-calculate-surgical](https://user-images.githubusercontent.com/82242098/170690773-834e4e25-6436-44cd-a9ad-06ebb128f8a7.jpg)
